@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles.css">
+    <script src="main.js" async></script>
+    <title>Breakout</title>
+</head>
+<body>
+    <h1>Breakout</h1>
+    <button id="rulesBtn" class="btn rules-btn">Rules/Settings</button>
+    <button id="blogBtn" class="btn blog-btn">Show Blog</button>
+    <canvas id="canvas"></canvas>
+    <div id="blog" class="blog hidden">
+        <h2>Project Thoughts</h2>
+        <button class="close" id="closeBlog">X</button>
+        <div class="blog-content">
+            <h3>Getting Started</h3>
+            <p>I know, I know... The obligatory canvas game. "Tune in this week" - <span>Aspiring Developers S:1 E:(9.56e11)</span>. This is my prevailing thought during the project as well. But, I gotta start somewhere.</p>
+            <p>First! To differentiate this project from others, I will not (present tense because I'm currently writing the code) be following any tutorials for this project. There are thousands of "code-with-me" follow along versions of this game out there.</p>
+            <p>I started to watch a few and like I said earlier, the deja vu was nauseating. So, in an effor to stand out in a field of beaten dead horses, this project will be my own work with reference only to language documentation or stack overflow articles.</p>
+            <h3>After Completion</h3>
+            <p>I hadn't used canvas before attempting this project. Parts of that were challenging to figure out. The most challenging aspect was... <span> come back later and finish blog</span>!</p>
+        </div>
+    </div>
+    <div id="rules" class="rules hidden">
+        <button class="close" id="closeRules">X</button>
+        <div class="rules-content">
+            <h3>Rules</h3>
+            <p>The goal is to break all the blocks with the ball.</p>
+            <p>
+                <ul>
+                    <li>Move the paddle left and right with the arrows on your keyboard.</li>
+                    <li>Position the paddle to hit the ball back towards the blocks.</li>
+                    <li>If the ball gets past your paddle, game over.</li>
+                </ul>
+            </p>
+            <h3>Settings</h3>
+            <p></p>
+        </div>
+    </div>
+</body>
+</html>
