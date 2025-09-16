@@ -11,7 +11,9 @@
     <h1>Breakout</h1>
     <button id="rulesBtn" class="btn rules-btn">Rules/Settings</button>
     <button id="blogBtn" class="btn blog-btn">Show Blog</button>
-    <canvas id="canvas" width="600" height="700"></canvas>
+    <button id="startBtn" class="btn start-btn">Start</button>
+    <div class="game-over" id="gameOver">Game Over</div>
+    <canvas id="canvas" width="700" height="500"></canvas>
     <div id="blog" class="blog hidden">
         <h2>Project Thoughts</h2>
         <button class="close" id="closeBlog">X</button>
@@ -22,8 +24,9 @@
             <p>I started to watch a few and like I said earlier, the deja vu was nauseating. So, in an effor to stand out in a field of beaten dead horses, this project will be my own work with reference only to language documentation or stack overflow articles.</p>
             <h3>After Completion</h3>
             <p>I hadn't used canvas before attempting this project. I realized as I read through the documentation there is literally a breakthrough game guide in the documentation... Either way, I enjoyed the project. The design portion was fun. Obviously it's a lot of fun to get something moving around the screen outside of simple CSS transitions.</p>
-            <p>I pushed myself to solve some of the logic issues without the tutorial. The wall bounce logic, moving the paddle, the ball hitting the paddle... IDK if I solved these problems with the same logic as the tutorial, but I know the game works. And It seems to work well! Overall, the project feels like a big success and I'll be excited for whatever comes next.</p>
-            <p>The most challenging aspect was... <span> come back later and finish blog</span>!</p>
+            <p>I pushed myself to solve some of the logic issues without the tutorial. The wall bounce logic, moving the paddle, the ball hitting the paddle... IDK if I solved these problems with the same logic as the tutorial, but I know the game works. And It seems to work well so far! Overall, the project feels like a big success and I'll be excited for whatever comes next.</p>
+            <p>The most challenging aspect was actually taking the "destroyed" blocks out of play. I was able to make the block invisible on the canvas with an if statement in the putBlocks() function. But the ball would still bounce off of the invisible block since the bounce logic is based on the blocks array. I tried a bunch of obscure array.filter() functions to no avail and eventually landed on an additional nested if statement in the hitBlock function.</p>
+            <p><span> come back later and finish blog</span>!</p>
         </div>
     </div>
     <div id="rules" class="rules hidden">
@@ -35,6 +38,8 @@
                 <ul>
                     <li>Move the paddle left and right with the arrows on your keyboard.</li>
                     <li>Position the paddle to hit the ball back towards the blocks.</li>
+                    <li>Hitting the blocks with the ball will destroy them.</li>
+                    <li>If you destroy all the blocks, you win!</li>
                     <li>If the ball gets past your paddle, game over.</li>
                 </ul>
             </p>

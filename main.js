@@ -5,6 +5,9 @@ const rules = document.getElementById('rules');
 const showRules = document.getElementById('rulesBtn');
 const clsBlog = document.getElementById('closeBlog');
 const clsRules = document.getElementById('closeRules');
+const play = document.getElementById('startBtn');
+let game = null;
+const gameOver = document.getElementById('gameOver');
 
 // Canvas Variables
 const canvas = document.getElementById('canvas');
@@ -13,23 +16,40 @@ let cWidth = canvas.width;
 let cHeight = canvas.height;
 
 // Paddle Variables
-let xRect = (cWidth / 2 - 32);
-let yRect = 690
-let widthRect = 64;
+let xPaddle = (cWidth / 2 - 32);
+let yPaddle = (cHeight - 10);
+let wPaddle = 64;
 
 // Ball variables
 let x = (cWidth/2);
 let y = (cHeight/2);
 let bRadius = 8;
-let dx = 2;
+let dx = 0.2;
 let dy = 3;
 
+// Block Variables
+
+let columns = 1;
+let rows = 2;
+let blocks = [];
+
+let block = {
+    x: 20,
+    y: 20,
+    width: 64,
+    height: 16,
+    show: true
+}
+
+block.x = (cWidth / rows) - block.width;
+let verticalGap = ((cWidth - (block.width * rows)) / rows - 1);
+const horizontalGap = 4;
 
 // Canvas objects
 function paddle() {
     ctx.beginPath();
     ctx.fillStyle = '#14B884';
-    ctx.rect(xRect, yRect, widthRect, 8);
+    ctx.rect(xPaddle, yPaddle, wPaddle, 8);
     ctx.fill();
     ctx.closePath();
 }
@@ -42,6 +62,30 @@ function ball() {
     ctx.closePath();
 }
 
+function createBlockLayout() {
+    for (let i = 0; i < rows; i++) {
+        for (let j = 0; j < columns; j++) {
+            let copy = {...block};
+            blocks.push(copy);
+            block.y = (block.y + block.height + horizontalGap);
+        }
+        block.y = 20;
+        block.x = (block.x + block.width + verticalGap);
+    }
+}
+
+function putBlocks() {
+    for (let each of blocks) {
+        if (each.show === true) {
+            ctx.beginPath();
+            ctx.fillStyle = '#14B884';
+            ctx.rect(each.x, each.y, each.width, each.height);
+            ctx.fill();
+            ctx.closePath();
+        }
+    }
+}
+
 function wallBounce(x, y) {
     if (x >= (cWidth - bRadius) || x <= + bRadius) {
         dx = -dx;
@@ -50,41 +94,72 @@ function wallBounce(x, y) {
     }
 
     if (y >= (cHeight - bRadius)) {
-        console.log('game over');
+        clearInterval(game);
+        play.disabled = false;
+        gameOver.style.visibility = 'visible';
     }
 }
 
-function paddleBounce(x, y, xRect, yRect) {
-    if ((y + bRadius) >= yRect) {
-        if ((x + bRadius) >= xRect && (x + bRadius) <= (xRect + widthRect)) {
+function paddleBounce(x, y, xPaddle, yPaddle) {
+    if ((y + bRadius) >= yPaddle) {
+        if ((x + bRadius) >= xPaddle && (x + bRadius) <= (xPaddle + wPaddle)) {
             dy = -dy;
         }
     }
 }
 
-// function orb() {
-//     ctx.beginPath();
-//     ctx.arc((cWidth/2), (cHeight/2), 12, Math.PI * 2, false);
-//     ctx.fillStyle = '#666';
-//     ctx.stroke();
-//     ctx.closePath();
-// }
+function hitBlock(x, y, array) {
+    let index;
+    for (let each of array) {
+        if ((y - bRadius) <= (each.y + each.height)) {
+            if ((x + bRadius) >= each.x && (x + bRadius) <= (each.x + each.width)) {
+                if (each.show) {
+                    dy = -dy;
+                    each.show = false;
+                }
+            }
+        }
+    }
+}
 
 function draw() {
     ctx.clearRect(0, 0, cWidth, cHeight);
     paddle();
     ball();
+    putBlocks();
     wallBounce(x, y);
-    paddleBounce(x, y, xRect, yRect);
+    paddleBounce(x, y, xPaddle, yPaddle);
+    hitBlock(x, y, blocks);
 
     x += dx;
     y += dy;
+    allBlocksGone(blocks);
 }
 
-setInterval(draw, 30);
+createBlockLayout();
+
+function newGame() {
+    game = setInterval(draw, 5);
+    
+    x = (cWidth/2);
+    y = (cHeight/2);
+    xPaddle = (cWidth / 2 - 32);
+    yPaddle = (cHeight - 10);
+}
+
+function allBlocksGone(array) {
+    for (let i = 0; i < array.length; i++) {
+        if (array[i].show == true) {
+
+        } else {
+            console.log('winning');
+            clearInterval(game);
+        }
+    }
+}
 
 // Event Listeners
-// Rules and Blog Listners
+// HTML Content Listners
 showBlog.addEventListener('click', function() {
     blog.classList.remove('hidden');
 })
@@ -101,12 +176,17 @@ clsRules.addEventListener('click', function() {
     rules.classList.add('hidden');
 })
 
-// Canvas Listeners
+play.addEventListener('click', function() {
+    play.disabled = true;
+    gameOver.style.visibility = 'hidden';
+    setTimeout(newGame, 500);
+});
+
+// Game Listeners
 document.addEventListener('keydown', function(e) {
     if (e.key === 'ArrowLeft') {
-        xRect <= 0 ? xRect = 0 : xRect -= 8;
+        xPaddle <= 0 ? xPaddle = 0 : xPaddle -= 8;
     } else if (e.key === 'ArrowRight') {
-        xRect >= (cWidth - widthRect) ? xRect = (cWidth - widthRect) : xRect += 8;
+        xPaddle >= (cWidth - wPaddle) ? xPaddle = (cWidth - wPaddle) : xPaddle += 8;
     }
 })
-

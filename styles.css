@@ -14,7 +14,7 @@ body {
     background-color: #093426;
     display: flex;
     flex-direction: column;
-    justify-content:center;
+    justify-content: center;
     align-items: center;
     overflow-x: hidden;
 }
@@ -50,17 +50,48 @@ h1 {
     box-shadow: inset 0 0 16px #927a73;
 }
 
-.rules-btn {
-    top: 85px;
-    right: 30px;
+.btn:disabled {
+    background-color: #927a73;
+    color: #888;
+    border-color: #9b2f07;
+    scale: .98;
+    box-shadow: none;
+}
+
+.btn:disabled:active {
+    box-shadow: none;
 }
 
 .blog-btn {
-    top: 50px;
+    top: 20px;
     right: 30px;
 }
 
-body > div {
+.rules-btn {
+    top: 55px;
+    right: 30px;
+}
+
+.start-btn {
+    top: 90px;
+    right: 30px;
+}
+
+.rules {
+    background-color: #14B884;
+    color: #093426;
+    padding: 10px 30px;
+    border-left: 4px solid #FD4D0C;
+    width: 40%;
+    height: 100vh;
+    overflow-y: auto;
+    position: absolute;
+    right: 0;
+
+    transition: right 500ms;
+}
+
+.blog {
     background-color: #14B884;
     color: #093426;
     padding: 10px 30px;
@@ -100,9 +131,32 @@ span {
     right: -40%;
 }
 
+.game-over {
+    width: 168px;
+    height: 1.5em;
+    background-color: #000;
+    color: red;
+    border: inset 8px solid red;
+    font-family: 'Impact', 'Arial Black', sans-serif;
+    border-radius: 4px;
+    text-align: center;
+    font-size:x-large;
+
+    position: relative;
+    top: 275px;
+    padding: 3px 8px;
+
+    visibility: hidden;
+}
+
+.win {
+    background-color: #093426;
+}
+
 canvas {
     background-color: #F7DDD4;
     border-radius: 4px;
     box-shadow: 4px 4px 4px #888, -4px 4px 4px #888;
+    margin-bottom: 150px;
 }
 
