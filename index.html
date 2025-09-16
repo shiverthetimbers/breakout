@@ -19,14 +19,13 @@
         <button class="close" id="closeBlog">X</button>
         <div class="blog-content">
             <h3>Getting Started</h3>
-            <p>I know, I know... The obligatory canvas game. "Tune in this week" - <span>Aspiring Developers S:1 E:(9.56e11)</span>. I'm thinking the same thing. But, we gotta start somewhere.</p>
-            <p>First! To differentiate this project from others, I will not be following any guides/tutorials for this project. There are thousands of "code-with-me" follow along versions of this game out there. But I've decided to complete this with as much of my own knowledge as possible.</p>
-            <p>So, in an effor to stand out in a field of thoroughly beaten horses, this project will be my own work with reference only to language documentation or stack overflow articles. That being said, if you're an experienced developer reviewing this project... Prepare yourself. I'm sure it's not perfect.</p>
-            <h3>After Completion</h3>
-            <p>I hadn't used canvas before attempting this project. I realized as I read through the documentation there is literally a breakthrough game guide in the documentation... Either way, I enjoyed the project. The design portion was fun. Obviously it's a lot of fun to get something moving around the screen outside of simple CSS transitions.</p>
-            <p>I pushed myself to solve the logic issues without the tutorial. In fact, I avoided the tutorial at all costs. I referenced some of the canvas specific stuff very early on. I don't know if I solved these problems with the same logic as the tutorial. Truthfully, I doubt it. I'm sure some of my solutions are far from the most effecient. I also took some creative liberty along the way, so I'm sure it's unique in more than one way.</p>
-            <p>The most challenging aspect was actually taking the "destroyed" blocks out of play. I was able to make the block invisible easily, but the ball would still bounce off of the invisible block since the bounce logic is based on the blocks array. I tried a bunch of obscure methods on the array like array.filter() to no avail. Eventually, simply adding another nested condition in the hitBlock() function simplified the issue.</p>
-            <p>After about 3 days of serious work, I will call it complete. Is it perfect? Nope! And I may come back to make tweaks later. But it's fun, basically functional, and I built it without following a guide. If you read this far, thanks for stopping by.</p>
+            <p>I know, I know... The obligatory canvas game. "Tune in this week" - <span>Aspiring Developers S:1 E:(9.56e11)</span>. I'm thinking the same thing. But we gotta start somewhere. First! To differentiate this project from others, I will not be following any guides/tutorials for this project. There are thousands of "code-with-me" follow-along versions of this game out there. But I've decided to complete this with as much of my own knowledge as possible.</p>
+            <p>So, in an effort to stand out in a field of thoroughly beaten horses, this project will be my own work with reference only to language documentation or Stack Overflow articles. That being said, if you're an experienced developer reviewing this project... Prepare yourself. I'm sure it's not perfect.</p>
+            <h3>Post Script </h3>
+            <p>I hadn't used Canvas before attempting this project. I realized as I read through the documentation, there is literally a breakthrough game guide in the documentation... I made a point to steer clear of that tutorial during my Google searches. The design portion was fun. Obviously, it's a lot of fun to get something moving around the screen outside of simple CSS transitions.</p>
+            <p>I don't know if I solved some of these challenges with the same logic as the tutorial. Truthfully, I doubt it. I'm aware that some of my solutions are far from the most efficient. I also took some creative liberty along the way, so I'm sure it's unique in more than one way.</p>
+            <p>The most challenging aspect was taking the "destroyed" blocks out of play. I was able to make the block invisible easily, but the ball would still bounce off the invisible block. The bounce logic is based on the blocks array, so I had a field day trying to modify the array the way I wanted to. I tried a bunch of obscure methods on the array, like array.filter(), to no avail. Eventually, simply adding another nested condition in the hitBlock() function solved the issue.</p>
+            <p>After about 3 days of serious work, I will call it complete. Is it perfect? Nope! And I may come back to make tweaks later. Having to tap the arrow keys rather than hold is annoying. But it's fun, basically functional, and I built it without following a guide. If you read this far, thanks for stopping by.</p>
         </div>
     </div>
     <div id="rules" class="rules hidden">
@@ -37,10 +36,11 @@
             <p>
                 <ul>
                     <li>Move the paddle left and right with the arrows on your keyboard.</li>
+                    <li>Currently, you need to tap the arrows. I'm working on hold key functionality.</li>
                     <li>Position the paddle to hit the ball back towards the blocks.</li>
                     <li>Hitting the blocks with the ball will destroy them.</li>
                     <li>If you destroy all the blocks, you win!</li>
-                    <li>If the ball gets past your paddle, game over.</li>
+                    <li>If the ball gets past your paddle, you lose.</li>
                 </ul>
             </p>
             <small><em>Bonus Tip:There is a "sweet spot" in the center of the paddle. If the ball makes contact there, it will go straight up!</em></small>
