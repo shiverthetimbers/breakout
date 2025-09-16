@@ -121,6 +121,16 @@ h2 {
     text-align: center;
 }
 
+small {
+    color: #F7DDD4;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
 span {
     font-style: italic;
     text-decoration: underline;
@@ -136,7 +146,6 @@ span {
     height: 1.5em;
     background-color: #000;
     color: red;
-    border: inset 8px solid red;
     font-family: 'Impact', 'Arial Black', sans-serif;
     border-radius: 4px;
     text-align: center;
@@ -151,6 +160,8 @@ span {
 
 .win {
     background-color: #093426;
+    color: #14B884;
+    text-shadow: 0 -1px #F7DDD4, 0 1px #F7DDD4, 1px 0 #F7DDD4, -1px 0 #F7DDD4;
 }
 
 canvas {
